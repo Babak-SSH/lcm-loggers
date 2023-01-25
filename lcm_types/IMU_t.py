@@ -1,0 +1,9 @@
+package data_types;
+
+struct IMU_t
+{
+	double acc_x;
+	double acc_y;
+	double acc_z;
+}
+

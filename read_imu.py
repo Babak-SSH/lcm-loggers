@@ -2,12 +2,9 @@ import serial
 import time
 import sys
 
-sys.path.insert(1, '/home/pi/projects/test_lcm/iust-quadruped/control/')
-sys.path.insert(2, '/home/pi/projects/test_lcm/iust-quadruped/control/robot_types/')
-
 import lcm
 
-from robot_types import IMU_t
+from data_types import IMU_t
 
 # initializing lcm and IMU_t data type
 lc = lcm.LCM()
