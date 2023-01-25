@@ -9,7 +9,7 @@ trap killbg EXIT
 pids=()
 python3 ./read_imu.py & 
 pids+=($!)
-python3 ./test_contact.py &
+python3 ./read_contact.py &
 pids+=($!)
 lcm-logger &
 
