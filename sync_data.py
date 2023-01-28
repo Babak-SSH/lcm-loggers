@@ -29,6 +29,8 @@ if len(sys.argv) < 2:
 
 log = lcm.EventLog(sys.argv[1], "r")
 
+matched_idx = []
+
 contact_data = []
 contact_timestamp = []
 
@@ -69,7 +71,7 @@ motor_timestamp["2"] = [x-start_time for x in motor_timestamp["2"]]
 motor_timestamp["5"] = [x-start_time for x in motor_timestamp["5"]]
 
 for i in range(len(imu_timestamp)):
-        matched_idx.append(find_closest(contact_timestamp, imu_timestamp[i]))
+    matched_idx.append(find_closest(contact_timestamp, imu_timestamp[i]))
 
 for i in range(len(imu_timestamp)):
     print("imu:", imu_timestamp[i])
