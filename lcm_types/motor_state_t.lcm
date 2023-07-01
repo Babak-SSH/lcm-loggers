@@ -1,0 +1,7 @@
+struct motor_state_t
+{
+	int32_t n;
+	int64_t ids[n];
+	boolean enabled;
+	boolean error;
+}

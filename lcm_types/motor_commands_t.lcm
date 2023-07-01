@@ -1,0 +1,5 @@
+struct motor_commands_t
+{
+	int32_t n;
+	motor_command_t commands[n];
+}

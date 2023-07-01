@@ -1,0 +1,8 @@
+struct motor_response_t
+{
+	double id;
+	double p;
+	double v;
+	double i;
+}
+

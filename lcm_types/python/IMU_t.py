@@ -9,49 +9,55 @@ except ImportError:
     from io import BytesIO
 import struct
 
-class contact_t(object):
-    __slots__ = ["touch"]
+class IMU_t(object):
+    __slots__ = ["acc_x", "acc_y", "acc_z"]
+
+    __typenames__ = ["double", "double", "double"]
+
+    __dimensions__ = [None, None, None]
 
     def __init__(self):
-        self.touch = False
+        self.acc_x = 0.0
+        self.acc_y = 0.0
+        self.acc_z = 0.0
 
     def encode(self):
         buf = BytesIO()
-        buf.write(contact_t._get_packed_fingerprint())
+        buf.write(IMU_t._get_packed_fingerprint())
         self._encode_one(buf)
         return buf.getvalue()
 
     def _encode_one(self, buf):
-        buf.write(struct.pack(">b", self.touch))
+        buf.write(struct.pack(">ddd", self.acc_x, self.acc_y, self.acc_z))
 
     def decode(data):
         if hasattr(data, 'read'):
             buf = data
         else:
             buf = BytesIO(data)
-        if buf.read(8) != contact_t._get_packed_fingerprint():
+        if buf.read(8) != IMU_t._get_packed_fingerprint():
             raise ValueError("Decode error")
-        return contact_t._decode_one(buf)
+        return IMU_t._decode_one(buf)
     decode = staticmethod(decode)
 
     def _decode_one(buf):
-        self = contact_t()
-        self.touch = bool(struct.unpack('b', buf.read(1))[0])
+        self = IMU_t()
+        self.acc_x, self.acc_y, self.acc_z = struct.unpack(">ddd", buf.read(24))
         return self
     _decode_one = staticmethod(_decode_one)
 
     _hash = None
     def _get_hash_recursive(parents):
-        if contact_t in parents: return 0
-        tmphash = (0xad85a7b4af70cc97) & 0xffffffffffffffff
-        tmphash  = (((tmphash<<1)&0xffffffffffffffff)  + (tmphash>>63)) & 0xffffffffffffffff
+        if IMU_t in parents: return 0
+        tmphash = (0xf71ed22ef0cedfbb) & 0xffffffffffffffff
+        tmphash  = (((tmphash<<1)&0xffffffffffffffff) + (tmphash>>63)) & 0xffffffffffffffff
         return tmphash
     _get_hash_recursive = staticmethod(_get_hash_recursive)
     _packed_fingerprint = None
 
     def _get_packed_fingerprint():
-        if contact_t._packed_fingerprint is None:
-            contact_t._packed_fingerprint = struct.pack(">Q", contact_t._get_hash_recursive([]))
-        return contact_t._packed_fingerprint
+        if IMU_t._packed_fingerprint is None:
+            IMU_t._packed_fingerprint = struct.pack(">Q", IMU_t._get_hash_recursive([]))
+        return IMU_t._packed_fingerprint
     _get_packed_fingerprint = staticmethod(_get_packed_fingerprint)
 

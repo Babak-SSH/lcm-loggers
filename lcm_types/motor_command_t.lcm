@@ -1,0 +1,9 @@
+struct motor_command_t
+{
+	double id;
+	double p_d;
+	double v_d;
+	double kp;
+	double kd;
+	double ff;
+}
