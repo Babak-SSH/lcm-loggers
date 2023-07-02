@@ -1,0 +1,17 @@
+#!/bin/bash
+killbg() {
+        for p in "${pids[@]}" ; do
+                kill "$p";
+        done
+}
+
+trap killbg EXIT
+pids=()
+python3 ./read_imu.py & 
+pids+=($!)
+python3 ./read_contact.py &
+
+while :
+do
+	sleep 1
+done

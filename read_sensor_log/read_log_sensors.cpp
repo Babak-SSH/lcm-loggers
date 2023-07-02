@@ -5,9 +5,9 @@
 
 #include <lcm/lcm-cpp.hpp>
 
-#include "./lcm_types/cpp/IMU_t.hpp"
-#include "./lcm_types/cpp/motor_response_t.hpp"
-#include "./lcm_types/cpp/contact_t.hpp"
+#include "../lcm_types/cpp/IMU_t.hpp"
+#include "../lcm_types/cpp/motor_response_t.hpp"
+#include "../lcm_types/cpp/contact_t.hpp"
 
 
 int main(int argc, char ** argv){

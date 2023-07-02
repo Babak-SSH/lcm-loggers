@@ -4,8 +4,8 @@ import argparse
 import lcm
 import matplotlib.pyplot as plt
 
-sys.path.insert(1, './lcm_types')
-sys.path.insert(2, './lcm_types/python')
+sys.path.insert(1, '../lcm_types')
+sys.path.insert(2, '../lcm_types/python')
 
 from lcm_types.python import contact_t, motor_response_t, IMU_t
 

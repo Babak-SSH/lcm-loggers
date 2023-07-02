@@ -1,12 +1,13 @@
 import sys
+
 import lcm
 
 from bisect import bisect_left, bisect, bisect_right
 
-sys.path.insert(1, '/home/pi/projects/test_lcm/iust-quadruped/control/')
-sys.path.insert(2, '/home/pi/projects/test_lcm/iust-quadruped/control/robot_types/')
+sys.path.insert(1, './lcm_types')
+sys.path.insert(2, './lcm_types/python')
 
-from robot_types import IMU_t, contact_t, motor_response_t
+from lcm_types.python import IMU_t, contact_t, motor_response_t
 
 
 def find_closest(myList, myNumber):
