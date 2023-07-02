@@ -20,3 +20,9 @@ g++ read_log_sensors.cpp -llcm -o read_log_sensors
 there are some simple examples to work with lcm in communication_examples.
 
 to add new datatypes, add the lcm types to lcm_types and use lcm-gen to generate them.
+
+to setup UDP multicast on your device run these commands:
+```shell
+sudo ifconfig "interface_name" multicast  
+sudo route add -net 224.0.0.0 netmask 240.0.0.0 dev "interface_name"
+```
